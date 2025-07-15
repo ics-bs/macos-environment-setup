@@ -8,6 +8,9 @@ defaults write com.apple.SubmitDiagInfo AutoSubmit -bool false
 # Enables moving of windows using cmd + ctrl + mouse drag
 defaults write -g NSWindowShouldDragOnGesture -bool true
 
+# Auto-hide the dock
+defaults write com.apple.dock autohide -bool true;
+
 # Set speed at which dock appears after mouseover
 defaults write com.apple.dock autohide-time-modifier -float 0.5
 defaults write com.apple.dock autohide-delay -float 0; killall Dock

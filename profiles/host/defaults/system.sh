@@ -5,6 +5,9 @@ defaults write com.apple.Spotlight UniversalSearchEnabled -bool false
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 defaults write com.apple.SubmitDiagInfo AutoSubmit -bool false
 
+# Auto-hide the dock
+defaults write com.apple.dock autohide -bool true;
+
 # Enables moving of windows using cmd + ctrl + mouse drag
 defaults write -g NSWindowShouldDragOnGesture -bool true
 
