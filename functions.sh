@@ -59,13 +59,12 @@ apply_macos_defaults() {
 install_vscode_extensions() {
   if command -v code &> /dev/null; then
     while read -r extension; do
-      while read -r extension; do
-        if [ "$DRY_RUN" = true ]; then
-          echo "[DRY RUN] Would install VS Code extension: $extension"
-        else
-          code --install-extension "$extension"
-        fi
-      done < "$PROFILE_DIR/vscode-extensions/extensions.txt"
+      if [ "$DRY_RUN" = true ]; then
+        echo "[DRY RUN] Would install VS Code extension: $extension"
+      else
+        code --install-extension "$extension"
+      fi
+    done < "$PROFILE_DIR/vscode-extensions/extensions.txt"
   else
     echo "VS Code CLI not found. Please install manually."
   fi
