@@ -57,3 +57,7 @@
 
 ### Notes
 - If no `--profile` argument is provided, `host` is used by default.
+- Install Parallels Tools
+- Open a terminal and run `git` to initiate XCode install
+- Remember to install `Homebrew` before running the script
+- If spotlight does not work in guest OS, but other commands (e.g. `cmd + v`) works, restart guest and host
