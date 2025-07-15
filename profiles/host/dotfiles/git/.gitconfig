@@ -1,0 +1,8 @@
+# .gitconfig
+[user]
+    name = Björn Svensson
+    email = bjorn.svensson@ics.lu.se
+
+[core]
+    editor = code --wait
+    autocrlf = input

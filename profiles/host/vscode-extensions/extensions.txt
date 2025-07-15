@@ -1,0 +1,3 @@
+James-Yu.latex-workshop
+tecosaur.latex-utilities
+mathematic.vscode-pdf

@@ -1,0 +1,27 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails and Spotlight
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# Vim swap files
+*.swp
+
+# Temporary files and backups
+*~
+*.bak
+*.tmp
+
+# System-generated files
+ehthumbs.db
+Thumbs.db
+
+# VS Code settings folder (optional, uncomment if unwanted)
+#.vscode
+.idea/
+private/

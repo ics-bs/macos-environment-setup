@@ -1,0 +1,11 @@
+ms-dotnettools.csdevkit
+vscjava.vscode-java-pack
+mhutchie.git-graph
+github.copilot
+ms-mssql.mssql
+ms-dotnettools.dotnet-maui
+ms-python.python
+redhat.vscode-xml
+ms-vscode.powershell
+esbenp.prettier-vscode
+eamodio.gitlens
