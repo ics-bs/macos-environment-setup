@@ -19,7 +19,19 @@
 
     This is required for installing App Store applications via `mas`.
 
-3. **Choose a Profile and Run Setup:**
+3. **Pre-authorize and Prepare Setup Script**
+
+    Before running the setup, ensure permissions and sudo session:
+
+    ```bash
+    chmod +x setup.sh
+    sudo -v
+    ```
+
+    - `chmod +x` ensures the setup script is executable.
+    - `sudo -v` pre-authorizes system-level changes, avoiding interruptions during setup.
+
+4. **Choose a Profile and Run Setup:**
 
     For Host configuration:
     ```bash
@@ -31,7 +43,7 @@
     ./setup.sh --profile=dev
     ```
 
-4. **(Optional) Dry Run Check:**
+5. **(Optional) Dry Run Check:**
     ```bash
     ./setup.sh --profile=host --dry-run
     ```
