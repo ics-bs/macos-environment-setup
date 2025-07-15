@@ -55,8 +55,10 @@ install_homebrew_packages
 echo "[INFO] Linking dotfiles..."
 link_dotfiles
 
-echo "[INFO] Updating LaTeX packages..."
-update_latex_packages
+if [ "$PROFILE" = "host" ]; then
+  echo "[INFO] Updating LaTeX packages..."
+  update_latex_packages
+fi
 
 echo "[INFO] Applying macOS defaults..."
 apply_macos_defaults

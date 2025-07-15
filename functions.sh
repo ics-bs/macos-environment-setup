@@ -25,6 +25,10 @@ update_latex_packages() {
     echo "[DRY RUN] Would run: sudo tlmgr update --self"
     echo "[DRY RUN] Would run: sudo tlmgr update --all"
   else
+    # Ensure tlmgr is in PATH
+    export PATH="/Library/TeX/texbin:$PATH"
+
+    # Update LaTeX packages
     sudo tlmgr update --self
     sudo tlmgr update --all
   fi
