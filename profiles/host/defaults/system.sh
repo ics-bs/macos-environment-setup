@@ -5,6 +5,9 @@ defaults write com.apple.Spotlight UniversalSearchEnabled -bool false
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 defaults write com.apple.SubmitDiagInfo AutoSubmit -bool false
 
+# Turn Firewall on
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+
 # Disable natural scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
