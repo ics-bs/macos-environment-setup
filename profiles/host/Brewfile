@@ -11,6 +11,7 @@ brew "duti"
 
 cask "alfred"
 cask "kitty"
+cask "lulu"
 cask "libreoffice"
 cask "obs"
 cask "obsidian"
