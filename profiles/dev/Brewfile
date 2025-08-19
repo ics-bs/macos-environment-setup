@@ -11,7 +11,7 @@ brew "stow"
 brew "duti"
 
 cask "visual-studio-code"
-Cask "dotnet-sdk"
+cask "dotnet-sdk"
 cask "scenebuilder"
 cask "dbeaver-community"
 cask "rectangle"
