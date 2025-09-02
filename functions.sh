@@ -51,7 +51,7 @@ update_latex_packages() {
 }
 
 # -------------------------------
-# Dotfiles via GNU Stow
+# Dotfiles via GNU Stow (with auto-backup)
 # -------------------------------
 link_dotfiles() {
   local dfdir="$PROFILE_DIR/dotfiles"
@@ -71,6 +71,21 @@ link_dotfiles() {
     return 0
   fi
 
+  # Backup conflicts (files in $HOME that block symlinks)
+  local timestamp
+  timestamp=$(date +%Y%m%d%H%M%S)
+  for pkg in "${packages[@]}"; do
+    while IFS= read -r -d '' file; do
+      local name target
+      name=$(basename "$file")
+      target="$HOME/$name"
+      if [ -e "$target" ] && [ ! -L "$target" ]; then
+        echo "[WARN] Conflict: $target exists. Backing up to ${target}.backup-${timestamp}"
+        mv "$target" "${target}.backup-${timestamp}"
+      fi
+    done < <(find "$dfdir/$pkg" -maxdepth 1 -mindepth 1 -print0)
+  done
+
   if [ "$DRY_RUN" = true ]; then
     echo "[DRY RUN] Would delete stray .DS_Store files under $dfdir"
   else
@@ -79,10 +94,14 @@ link_dotfiles() {
 
   (
     cd "$dfdir"
+    echo "[INFO] Linking dotfiles from $dfdir into $HOME"
     if [ "$DRY_RUN" = true ]; then
       stow -n -v -t "$HOME" "${packages[@]}"
     else
-      stow -v -t "$HOME" "${packages[@]}"
+      stow -v -t "$HOME" "${packages[@]}" || {
+        echo "[ERROR] Stow failed. Please check conflicts."
+        exit 1
+      }
     fi
   )
 }
