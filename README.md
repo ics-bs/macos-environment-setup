@@ -1,63 +1,50 @@
-## macOS Environment Setup
+# macOS Environment Setup
 
-### Contents
-- Profiles for Host and Dev
-- Dotfiles per profile
-- Homebrew package lists per profile
-- VS Code extensions file per profile
-- macOS defaults per profile
-- Single setup script with dry-run and logging
+## What it does
+- Installs Homebrew packages per profile
+- Symlinks dotfiles **into `$HOME`** via GNU Stow (repo = source of truth)
+- Applies macOS defaults (per profile)
+- Installs VS Code extensions
+- Installs Mac App Store apps (if signed in)
+- Single setup script with flags and logging (`setup.log`)
 
-### Installation
+## Installation
 
-1. **Install Homebrew manually if missing:**
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
+1) **Install Homebrew (if missing)**
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-2. **(Host Profile Only) Sign into iCloud and Mac App Store.**
+2) **(Host only) Sign into iCloud + Mac App Store**  
+Needed for `mas` installs.
 
-    This is required for installing App Store applications via `mas`.
+3) **Authorize and run**
+```bash
+chmod +x setup.sh
+sudo -v
+./setup.sh --profile=host    # or --profile=dev
+```
 
-3. **Pre-authorize and Prepare Setup Script**
+**Common flags**
+- `--dry-run` → print actions only
+- `--no-upgrade` → install from Brewfile without upgrading existing formulae/casks
+- `--brew-cleanup` → remove formulae/casks not in Brewfile
+- `--skip-texlive` → skip TeX Live (`tlmgr`) updates
 
-    Before running the setup, ensure permissions and sudo session:
+Examples:
+```bash
+./setup.sh --profile=dev --dry-run
+./setup.sh --profile=host --no-upgrade --skip-texlive
+```
 
-    ```bash
-    chmod +x setup.sh
-    sudo -v
-    ```
+## Folder structure
+- `profiles/host/` — Brewfile, `dotfiles/`, `defaults/`, `vscode-extensions/`
+- `profiles/dev/` — Brewfile, `dotfiles/`, `defaults/`, `vscode-extensions/`
+- `functions.sh` — shared logic
+- `setup.sh` — entrypoint
 
-    - `chmod +x` ensures the setup script is executable.
-    - `sudo -v` pre-authorizes system-level changes, avoiding interruptions during setup.
-
-4. **Choose a Profile and Run Setup:**
-
-    For Host configuration:
-    ```bash
-    ./setup.sh --profile=host
-    ```
-
-    For Development configuration:
-    ```bash
-    ./setup.sh --profile=dev
-    ```
-
-5. **(Optional) Dry Run Check:**
-    ```bash
-    ./setup.sh --profile=host --dry-run
-    ```
-    This simulates all actions without applying changes.
-
-### Folder Structure
-- `profiles/host/` → Host-specific Brewfile, dotfiles, defaults, single VS Code extensions file
-- `profiles/dev/` → Development-specific Brewfile, dotfiles, defaults, single VS Code extensions file
-- `functions.sh` → Core setup logic shared across profiles
-- `setup.sh` → Entry script handling profile selection and execution flow
-
-### Notes
-- If no `--profile` argument is provided, `host` is used by default.
-- Install Parallels Tools
-- Open a terminal and run `git` to initiate XCode install
-- Remember to install `Homebrew` before running the script
-- If spotlight does not work in guest OS, but other commands (e.g. `cmd + v`) works, restart guest and host
+## Notes
+- Default profile is `host` if none is provided.
+- Run `git` once to trigger Xcode command line tools if needed.
+- Install Parallels Tools in VMs.
+- If Spotlight misbehaves in a guest but other shortcuts work, restart guest and host.
