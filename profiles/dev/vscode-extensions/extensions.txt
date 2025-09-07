@@ -9,3 +9,6 @@ redhat.vscode-xml
 ms-vscode.powershell
 esbenp.prettier-vscode
 eamodio.gitlens
+openai.chatgpt
+asvetliakov.vscode-neovim
+pkief.material-icon-theme

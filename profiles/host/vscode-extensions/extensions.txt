@@ -1,3 +1,5 @@
 James-Yu.latex-workshop
 tecosaur.latex-utilities
 mathematic.vscode-pdf
+asvetliakov.vscode-neovim
+pkief.material-icon-theme

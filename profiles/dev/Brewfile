@@ -9,6 +9,7 @@ brew "dockutil"
 brew "mas"
 brew "stow"
 brew "duti"
+brew "nvim"
 
 cask "visual-studio-code"
 cask "dotnet-sdk"

@@ -27,6 +27,9 @@ alias gl='git pull'
 # Quick access to iCloud
 alias icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
 
+# Quick access to ics folder in icloud
+alias icsorg='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs/org/ics"'
+
 # -------------------------------
 # cdpath (lets you do "cd iCloud")
 # -------------------------------

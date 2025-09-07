@@ -8,6 +8,7 @@ brew "dockutil"
 brew "mas"
 brew "stow"
 brew "duti"
+brew "nvim"
 
 cask "alfred"
 cask "kitty"
